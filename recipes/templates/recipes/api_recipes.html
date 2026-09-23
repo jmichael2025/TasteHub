@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TasteHub - Discover Recipes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container"> <a class="navbar-brand" href="/">TasteHub</a> </div>
+    </nav>
+    <main class="container py-5">
+        <div class="text-center mb-5">
+            <h1>Discover Recipes</h1>
+            <p class="lead">Recipe inspiration from TheMealDB API</p>
+        </div>
+        <div class="card mx-auto" style="max-width: 600px;"> {% if meal.strMealThumb %} <img
+                src="{{ meal.strMealThumb }}" class="card-img-top" alt="{{ meal.strMeal }}"> {% endif %} <div
+                class="card-body">
+                <h2 class="card-title">{{ meal.strMeal }}</h2>
+                <p class="text-muted"> Category: {{ meal.strCategory }} </p>
+                <p> Cuisine: {{ meal.strArea }} </p> <a href="{{ meal.strSource }}" target="_blank"
+                    class="btn btn-primary"> View Full Recipe </a>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
