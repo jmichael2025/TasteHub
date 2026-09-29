@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Recipe
-from django.contrib.auth.forms import UserCreationForm
+from .forms import RegisterForm
 from django.contrib.auth import login
 import requests
 
@@ -17,12 +17,12 @@ def api_recipes(request):
 
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = RegisterForm(request.POST)
         
         if form.is_valid():
             user = form.save()
             login(request, user)
             return redirect('recipe_list')
     else:
-        form = UserCreationForm()
+        form = RegisterForm()
     return render(request, 'registration/register.html', {'form': form})
