@@ -5,4 +5,6 @@ urlpatterns = [
     path('', views.recipe_list, name='recipe_list'),
     path('api-recipes/', views.api_recipes, name='api_recipes'),
     path('register/', views.register, name='register'),
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('create-recipe/', views.create_recipe, name='create_recipe'),
 ]
