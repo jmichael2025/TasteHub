@@ -47,3 +47,14 @@ def create_recipe(request):
         form = RecipeForm()
     return render(request, 'recipes/create_recipe.html', {'form': form})
 
+@login_required
+def my_recipes(request):
+    recipes = Recipe.objects.filter(author=request.user)
+    return render(request, 
+                  'recipes/my_recipes.html',
+                    {'recipes': recipes})
+
+@login_required
+def recipe_detail(request, recipe_id):
+    recipe = Recipe.objects.get(id=recipe_id)
+    return render(request, 'recipes/recipe_detail.html', {'recipe': recipe})

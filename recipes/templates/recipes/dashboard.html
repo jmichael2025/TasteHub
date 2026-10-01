@@ -3,7 +3,7 @@
 {% block title %}Dashboard - TasteHub{% endblock %}
 
 {% block content %}
-<div class="container py5">
+<div class="container py-5">
 
     <div class="text-center mb-5">
         <h1> Welcome to your Tastehub dashboard!</h1>
@@ -14,31 +14,33 @@
     <div class="row g-4">
 
     <div class="col-md-4">
-        <div class="card h-100 shadow-sm">
+        <div class="card h-100 shadow-sm border-0 rounded-4">
             <div class="card-body text-center">
                 <h4>🍴 My Recipes</h4>
                 <p class="text-muted">
                     Manage and view your saved recipes.
                 </p>
-                <a href="#" class="btn btn-primary">My Recipes</a>
+                <a href="{% url 'my_recipes' %}" class="btn btn-primary">
+    My Recipes
+</a>
             </div>
         </div>
     </div>
 
     <div class="col-md-4">
-        <div class="card h-100 shadow-sm">
+        <div class="card h-100 shadow-sm border-0 rounded-4">
             <div class="card-body text-center">
                 <h4>📝 Create Recipe</h4>
                 <p class="text-muted">
                     Add new recipes to your collection.
                 </p>
-                <a href="#" class="btn btn-primary">Create Recipe</a>
+                <a href="{% url 'create_recipe' %}" class="btn btn-primary">Create Recipe</a>
             </div>
         </div>
     </div>
 
     <div class="col-md-4">
-        <div class="card h-100 shadow-sm">
+        <div class="card h-100 shadow-sm border-0 rounded-4">
             <div class="card-body text-center">
                 <h4>🔍 Explore Recipes</h4>
                 <p class="text-muted">

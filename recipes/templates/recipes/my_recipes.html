@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}My Recipes - TasteHub{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="text-center mb-5">
+        <h1 class="fw-bold">My Recipes</h1>
+        <p class="lead">Recipes you have created on TasteHub.</p>
+    </div>
+
+    {% if recipes %}
+
+    <div class="row g-4">
+
+        {% for recipe in recipes %}
+
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm border-0 rounded-4">
+
+                <div class="card-body p-4">
+
+                    <h4 class="fw-bold mb-3">
+                        {{ recipe.name }}
+                    </h4>
+
+                    <p class="text-muted">
+                        {{ recipe.description }}
+                    </p>
+
+                    <p class="mb-0">
+                        <strong>Category:</strong>
+                        {{ recipe.category }}
+                    </p>
+                    
+                    <div class="mt-4">
+                        <a href="{% url 'recipe_detail' recipe.id %}" class="btn btn-primary">
+                            View Recipe
+                        </a>
+                    </div>
+                    
+
+                </div>
+
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% else %}
+
+    <div class="text-center py-5">
+        <h4>You haven't created any recipes yet.</h4>
+        <p class="text-muted">
+            Start sharing your favourite recipe with the TasteHub community.
+        </p>
+
+        <a href="{% url 'create_recipe' %}" class="btn btn-primary">
+            Create Your First Recipe
+        </a>
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}
