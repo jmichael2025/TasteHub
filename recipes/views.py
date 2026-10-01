@@ -12,7 +12,7 @@ def dashboard(request):
 
 def recipe_list(request):
     recipes = Recipe.objects.all()
-    return render(request, 'recipes/recipe_list.html', {'recipes': recipes})
+    return render(request, 'recipes/index.html', {'recipes': recipes})
 
 def api_recipes(request):
     url = "https://www.themealdb.com/api/json/v1/1/random.php"

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 
 <head>
     <meta charset="UTF-8">
@@ -7,8 +8,14 @@
 
     <title>{% block title %}TasteHub{% endblock %}</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-        rel="stylesheet">
+    <link rel="icon"
+      type="image/svg+xml" href="{% static 'recipes/favicon.svg' %}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="{% static 'recipes/css/style.css' %}">
+
 </head>
 
 <body>
@@ -24,28 +31,26 @@
 
                 {% if user.is_authenticated %}
 
-                    <span class="text-white me-3">
-                        Welcome, {{ user.username }}!
-                    </span>
+                <span class="text-white me-3">
+                    Welcome, {{ user.username }}!
+                </span>
 
-                    <form method="post" action="{% url 'logout' %}" class="d-inline">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-outline-light btn-sm">
-                            Logout
-                        </button>
-                    </form>
+                <form method="post" action="{% url 'logout' %}" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-light btn-sm">
+                        Logout
+                    </button>
+                </form>
 
                 {% else %}
 
-                    <a href="{% url 'login' %}"
-                       class="btn btn-outline-light btn-sm me-2">
-                        Login
-                    </a>
+                <a href="{% url 'login' %}" class="btn btn-outline-light btn-sm me-2">
+                    Login
+                </a>
 
-                    <a href="{% url 'register' %}"
-                       class="btn btn-light btn-sm">
-                        Register
-                    </a>
+                <a href="{% url 'register' %}" class="btn btn-light btn-sm">
+                    Register
+                </a>
 
                 {% endif %}
 
@@ -59,6 +64,34 @@
         {% endblock %}
     </main>
 
+    <footer class="site-footer">
+        <div class="container text-center">
+
+            <h5 class="mb-2">TasteHub</h5>
+
+            <p class="footer-tagline">
+                Discover, create and share your favourite recipes.
+            </p>
+
+            <p class="mb-0 small">
+                <a href="https://www.instagram.com/tastehub.recipes/" target="_blank" class="text-decoration-none me-3"
+                    aria-label="Instagram">
+                    Instagram
+                    <i class="fab fa-instagram"></i>
+                </a>
+                |
+                <a href="https://www.facebook.com/tastehublahore" target="_blank" class="text-decoration-none me-3"
+                    aria-label="Facebook">
+                    Facebook
+                    <i class="fab fa-facebook"></i>
+                </a>
+
+                © 2026 TasteHub. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
 </body>
 
 </html>

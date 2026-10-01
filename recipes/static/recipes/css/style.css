@@ -1,0 +1,83 @@
+/* TasteHub custom styles */
+
+body {
+    background-color: #fff8f0;
+    font-family: Arial, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    background: linear-gradient(135deg, #6f42c1, #8e44ad) !important;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* Main headings */
+h1,
+h2,
+h3,
+h4 {
+    color: #4b2c6f;
+}
+
+/* Cards */
+.card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+}
+
+.btn-primary:hover {
+    background-color: #59339d;
+    border-color: #59339d;
+}
+
+/* Recipe cards */
+.recipe-card {
+    height: 100%;
+}
+
+/* Footer */
+.site-footer {
+    background-color: #3b2457;
+    color: white;
+    margin-top: 60px;
+    padding: 30px 0;
+}
+
+.site-footer a {
+    color: white;
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    opacity: 0.75;
+    
+}.footer-tagline {
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+}
+
+
+
+/* Forms */
+.form-control:focus,
+.form-select:focus {
+    border-color: #8e44ad;
+    box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.15);
+}
+
