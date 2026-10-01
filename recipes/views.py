@@ -58,3 +58,34 @@ def my_recipes(request):
 def recipe_detail(request, recipe_id):
     recipe = Recipe.objects.get(id=recipe_id)
     return render(request, 'recipes/recipe_detail.html', {'recipe': recipe})
+
+@login_required
+def edit_recipe(request, recipe_id):
+    recipe = Recipe.objects.get(id=recipe_id)
+
+    if request.method == 'POST':
+        form = RecipeForm(request.POST, instance=recipe)
+
+        if form.is_valid():
+            form.save()
+            return redirect('recipe_detail', recipe_id=recipe.id)
+    else:
+        form = RecipeForm(instance=recipe)
+    
+    return render(request, 
+                  'recipes/edit_recipe.html', 
+                  {'form': form, 'recipe': recipe}
+                  )
+
+@login_required
+def delete_recipe(request, recipe_id):
+    recipe = Recipe.objects.get(id=recipe_id)
+
+    if request.method == 'POST':
+        recipe.delete()
+        return redirect('my_recipes')
+
+    return render(request, 
+                  'recipes/delete_recipe.html', 
+                  {'recipe': recipe}
+                  )

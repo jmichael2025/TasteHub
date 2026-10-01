@@ -1,4 +1,3 @@
-
 {% extends "base.html" %}
 
 {% block title %}{{ recipe.name }} - TasteHub{% endblock %}
@@ -46,11 +45,14 @@
                             Created by {{ recipe.author.username }}
                         </small>
                     </div>
-
-                    <a href="{% url 'my_recipes' %}"
-                       class="btn btn-outline-primary">
-                        ← Back to My Recipes
-                    </a>
+                    <div class="d-flex gap-2">
+                        <a href="{% url 'edit_recipe' recipe.id %}" class="btn btn-primary">
+                            Edit Recipe </a>
+                        <a href="{% url 'delete_recipe' recipe.id %}" class="btn btn-outline-danger">
+                            Delete Recipe
+                        </a>
+                        <a href="{% url 'my_recipes' %}" class="btn btn-outline-primary"> ← Back to My Recipes </a>
+                    </div>
 
                 </div>
 
