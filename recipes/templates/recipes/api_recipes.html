@@ -1,32 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% block body_class %}page-background{% endblock %}
+{% block title %}TasteHub - Discover Recipes{% endblock %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TasteHub - Discover Recipes</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
+{% block content %}
 
-<body>
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-        <div class="container"> <a class="navbar-brand" href="/">TasteHub</a> </div>
-    </nav>
-    <main class="container py-5">
-        <div class="text-center mb-5">
-            <h1>Discover Recipes</h1>
-            <p class="lead">Recipe inspiration from TheMealDB API</p>
-        </div>
-        <div class="card mx-auto" style="max-width: 600px;"> {% if meal.strMealThumb %} <img
-                src="{{ meal.strMealThumb }}" class="card-img-top" alt="{{ meal.strMeal }}"> {% endif %} <div
-                class="card-body">
-                <h2 class="card-title">{{ meal.strMeal }}</h2>
-                <p class="text-muted"> Category: {{ meal.strCategory }} </p>
-                <p> Cuisine: {{ meal.strArea }} </p> <a href="{{ meal.strSource }}" target="_blank"
-                    class="btn btn-primary"> View Full Recipe </a>
+
+<main class="container py-5">
+    <div class="text-center mb-5">
+        <h1>Discover Recipes</h1>
+        <p class="lead">Recipe inspiration from TheMealDB API</p>
+        <form method="get" action="{% url 'api_recipes' %}" class="mb-4">
+
+            <div class="input-group mx-auto" style="max-width: 600px;">
+
+                <input type="text" name="search" class="form-control" placeholder="Search for a recipe, e.g. chicken"
+                    value="{{ search_term }}">
+
+                <button type="submit" class="btn btn-primary">
+                    Search
+                </button>
+
             </div>
-        </div>
-    </main>
-</body>
 
-</html>
+        </form>
+    </div>
+    <div class="row g-4">
+        {% for meal in meals %}
+
+        <div class="col-sm-6 col-lg-4">
+
+            <div class="card h-100 shadow-sm border-0 rounded-4">
+
+                {% if meal.strMealThumb %}
+                <img src="{{ meal.strMealThumb }}" class="card-img-top" alt="{{ meal.strMeal }}"
+                    style="height: 180px; object-fit: cover;">
+                {% endif %}
+
+                <div class="card-body">
+
+                    <h6 class="card-title fw-bold">
+                        {{ meal.strMeal }}
+                    </h6>
+
+                    <p class="text-muted mb-1 small">
+                        Category: {{ meal.strCategory }}
+                    </p>
+
+                    <p class="mb-3 small">
+                        Cuisine: {{ meal.strArea }}
+                    </p>
+
+
+                    <a href="https://www.themealdb.com/meal/{{ meal.idMeal }}" target="_blank"
+                        class="btn btn-primary btn-sm">
+                        View Full Recipe
+                    </a>
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}

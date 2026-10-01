@@ -8,8 +8,7 @@
 
     <title>{% block title %}TasteHub{% endblock %}</title>
 
-    <link rel="icon"
-      type="image/svg+xml" href="{% static 'recipes/favicon.svg' %}">
+    <link rel="icon" type="image/svg+xml" href="{% static 'recipes/favicon.svg' %}">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -18,25 +17,48 @@
 
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100 {% block body_class %}{% endblock %}">
 
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
 
+            <!-- Brand -->
             <a class="navbar-brand" href="{% url 'recipe_list' %}">
                 TasteHub
             </a>
 
-            <div class="ms-auto">
+            <!-- Navigation links -->
+            <div class="ms-auto d-flex align-items-center gap-2">
+
+                <a href="{% url 'recipe_list' %}" class="btn btn-outline-light btn-sm">
+                    Home
+                </a>
+
+                <a href="{% url 'api_recipes' %}" class="btn btn-outline-light btn-sm">
+                    Explore
+                </a>
 
                 {% if user.is_authenticated %}
 
-                <span class="text-white me-3">
+                <a href="{% url 'dashboard' %}" class="btn btn-outline-light btn-sm">
+                    Dashboard
+                </a>
+
+                <a href="{% url 'my_recipes' %}" class="btn btn-outline-light btn-sm">
+                    My Recipes
+                </a>
+
+                <a href="{% url 'create_recipe' %}" class="btn btn-outline-light btn-sm">
+                    Create Recipe
+                </a>
+
+                <span class="text-white ms-2 me-2">
                     Welcome, {{ user.username }}!
                 </span>
 
                 <form method="post" action="{% url 'logout' %}" class="d-inline">
                     {% csrf_token %}
+
                     <button type="submit" class="btn btn-outline-light btn-sm">
                         Logout
                     </button>
@@ -44,7 +66,7 @@
 
                 {% else %}
 
-                <a href="{% url 'login' %}" class="btn btn-outline-light btn-sm me-2">
+                <a href="{% url 'login' %}" class="btn btn-outline-light btn-sm">
                     Login
                 </a>
 
@@ -59,7 +81,7 @@
         </div>
     </nav>
 
-    <main>
+    <main class="flex-grow-1">
         {% block content %}
         {% endblock %}
     </main>
@@ -79,7 +101,7 @@
                     Instagram
                     <i class="fab fa-instagram"></i>
                 </a>
-                |
+
                 <a href="https://www.facebook.com/tastehublahore" target="_blank" class="text-decoration-none me-3"
                     aria-label="Facebook">
                     Facebook
