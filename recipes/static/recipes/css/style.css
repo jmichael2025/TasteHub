@@ -5,6 +5,8 @@ body {
     font-family: Arial, sans-serif;
 }
 
+
+
 /* Navbar */
 .navbar {
     background: linear-gradient(135deg, #6f42c1, #8e44ad) !important;
@@ -14,6 +16,13 @@ body {
     font-weight: bold;
     font-size: 1.5rem;
 }
+.navbar-logo {
+    height: 30px;
+    width: 30px;
+    object-fit: contain;
+    margin-right: 6px;
+}
+
 
 /* Main headings */
 h1,

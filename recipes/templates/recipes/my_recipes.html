@@ -20,7 +20,7 @@
         <div class="col-md-6 col-lg-4">
             <div class="card h-100 shadow-sm border-0 rounded-4">
 
-                <div class="card-body p-4">
+                <div class="card-body p-4 d-flex flex-column">
 
                     <h4 class="fw-bold mb-3">
                         {{ recipe.name }}
@@ -34,13 +34,13 @@
                         <strong>Category:</strong>
                         {{ recipe.category }}
                     </p>
-                    
-                    <div class="mt-4">
+
+                    <div class="mt-auto pt-3">
                         <a href="{% url 'recipe_detail' recipe.id %}" class="btn btn-primary">
                             View Recipe
                         </a>
                     </div>
-                    
+
 
                 </div>
 
