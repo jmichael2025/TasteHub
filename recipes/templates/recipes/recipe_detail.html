@@ -45,14 +45,31 @@
                             Created by {{ recipe.author.username }}
                         </small>
                     </div>
+                    {% if recipe.author == user %}
+
                     <div class="d-flex gap-2">
                         <a href="{% url 'edit_recipe' recipe.id %}" class="btn btn-primary">
-                            Edit Recipe </a>
+                            Edit Recipe
+                        </a>
+
                         <a href="{% url 'delete_recipe' recipe.id %}" class="btn btn-outline-danger">
                             Delete Recipe
                         </a>
-                        <a href="{% url 'my_recipes' %}" class="btn btn-primary"> ← Back to My Recipes </a>
+
+                        <a href="{% url 'my_recipes' %}" class="btn btn-primary">
+                            ← Back to My Recipes
+                        </a>
                     </div>
+
+                    {% else %}
+
+                    <div>
+                        <a href="{% url 'home' %}" class="btn btn-primary">
+                            ← Back to TasteHub Recipes
+                        </a>
+                    </div>
+
+                    {% endif %}
 
                 </div>
 

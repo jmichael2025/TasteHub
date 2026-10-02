@@ -106,7 +106,7 @@ def recipe_detail(request, recipe_id):
 
 @login_required
 def edit_recipe(request, recipe_id):
-    recipe = Recipe.objects.get(id=recipe_id)
+    recipe = Recipe.objects.get(id=recipe_id, author=request.user)
 
     if request.method == 'POST':
         form = RecipeForm(request.POST, instance=recipe)
@@ -124,7 +124,7 @@ def edit_recipe(request, recipe_id):
 
 @login_required
 def delete_recipe(request, recipe_id):
-    recipe = Recipe.objects.get(id=recipe_id)
+    recipe = Recipe.objects.get(id=recipe_id, author=request.user)
 
     if request.method == 'POST':
         recipe.delete()
