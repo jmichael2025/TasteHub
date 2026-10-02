@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Recipe
+from .models import Recipe, Category
 from .forms import RegisterForm, RecipeForm
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
@@ -12,12 +12,14 @@ def dashboard(request):
 
 def home(request):
     recipes = Recipe.objects.all()
+    categories = Category.objects.all()
 
     return render(
         request,
         'recipes/index.html',
         {
-            'recipes': recipes
+            'recipes': recipes,
+            'categories': categories
         }
     )
 def browse_recipes(request):

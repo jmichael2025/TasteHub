@@ -12,16 +12,47 @@
                 Discover delicious recipes and share your favourites.
             </p>
         </div>
+        <div class="row justify-content-center mb-5">
 
+            <div class="col-lg-9">
+
+                <div class="card shadow-sm border-0 rounded-4 p-3">
+
+                    <div class="row g-3 align-items-end">
+
+                        <div class="col-md-8">
+                            <label for="recipe-search" class="form-label fw-bold">
+                                Search Recipe
+                            </label>
+
+                            <input type="text" id="recipe-search" class="form-control"
+                                placeholder="e.g. Omelette, Chicken...">
+                        </div>
+
+
+
+                        <div class="col-md-4">
+                            <button type="button" id="search-button" class="btn btn-primary w-100">
+                                Search
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
         <div class="row g-4">
 
             {% for recipe in recipes %}
 
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-6 col-lg-4 recipe-item" data-category="{{ recipe.category.name|lower }}">
 
                 <div class="card h-100 shadow-sm border-0 rounded-4">
 
-                    <div class="card-body p-4">
+                    <div class="card-body p-4 d-flex flex-column">
 
                         <h5 class="card-title fw-bold">
                             {{ recipe.name }}
@@ -36,7 +67,7 @@
                             {{ recipe.category.name }}
                         </p>
 
-                        <div class="mt-3">
+                        <div class="mt-auto pt-3">
 
                             {% if user.is_authenticated %}
 
@@ -70,6 +101,15 @@
             </div>
 
             {% endfor %}
+            <div id="no-results" class="no-results-message text-center py-4 px-3" style="display: none;">
+
+                <h4 class="fw-bold mb-2">No recipes found.</h4>
+
+                <p class="mb-0">
+                    Try a different search term.
+                </p>
+
+            </div>
 
         </div>
 
