@@ -50,13 +50,18 @@
                         Cuisine: {{ meal.strArea }}
                     </p>
 
-
+                    {% if user.is_authenticated %}
                     <a href="https://www.themealdb.com/meal/{{ meal.idMeal }}" target="_blank"
                         class="btn btn-primary btn-sm">
                         View Full Recipe
                     </a>
 
+                    {% else %}
+                    <a href="{% url 'login' %}" class="btn btn-primary btn-sm">
+                        Login to View Recipe
+                    </a>
 
+                    {% endif %}
 
                 </div>
 

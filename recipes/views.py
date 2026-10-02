@@ -10,7 +10,7 @@ import requests
 def dashboard(request):
     return render(request, "recipes/dashboard.html")
 
-def recipe_list(request):
+def home(request):
     recipes = Recipe.objects.all()
 
     return render(
@@ -20,6 +20,8 @@ def recipe_list(request):
             'recipes': recipes
         }
     )
+def browse_recipes(request):
+    return render(request, 'recipes/browse_recipes.html')
 
 
 def api_recipes(request):
