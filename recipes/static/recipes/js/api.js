@@ -1,3 +1,5 @@
+/* jshint esversion: 6 */
+
 // TasteHub API JavaScript
 
 console.log("TasteHub API JavaScript loaded");

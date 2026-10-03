@@ -1,3 +1,4 @@
+/* jshint esversion: 6 */
 // TasteHub JavaScript
 
 console.log("TasteHub JavaScript loaded");
@@ -12,10 +13,10 @@ function filterRecipes() {
     let visibleRecipes = 0;
     recipeItems.forEach(recipe => {
         const recipeName = recipe.querySelector(".card-title").textContent.toLowerCase().trim();
-        
+
         const matchesSearch =
             searchTerm === "" || recipeName.includes(searchTerm);
-        
+
         if (matchesSearch) {
             recipe.style.display = "block";
             visibleRecipes++;
@@ -25,7 +26,7 @@ function filterRecipes() {
 
     });
 
-      if (visibleRecipes === 0) {
+    if (visibleRecipes === 0) {
         noResults.style.display = "block";
     } else {
         noResults.style.display = "none";
@@ -33,10 +34,14 @@ function filterRecipes() {
 }
 
 
-searchButton.addEventListener("click", function () {
-    filterRecipes();
-});
+if (searchButton && searchInput) {
 
-searchInput.addEventListener("input", function () {
-    filterRecipes();
-});
+    searchButton.addEventListener("click", function () {
+        filterRecipes();
+    });
+
+    searchInput.addEventListener("input", function () {
+        filterRecipes();
+    });
+
+}

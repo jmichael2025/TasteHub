@@ -1,9 +1,8 @@
 {% extends "base.html" %}
+{% load static %}
 {% block body_class %}page-background{% endblock %}
 {% block title %}TasteHub - Discover Recipes{% endblock %}
-
 {% block content %}
-
 
 <main class="container py-5">
     <div class="text-center mb-5">
@@ -11,10 +10,10 @@
         <p class="lead">Recipe inspiration from TheMealDB API</p>
         <form method="get" action="{% url 'api_recipes' %}" class="mb-4">
 
-            <div class="input-group mx-auto" style="max-width: 600px;">
+            <div class="input-group mx-auto api-search-container">
 
-                <input type="text" name="search" id="api-search" class="form-control" placeholder="Search for a recipe, e.g. chicken"
-                    value="{{ search_term }}">
+                <input type="text" name="search" id="api-search" class="form-control"
+                    placeholder="Search for a recipe, e.g. chicken" value="{{ search_term }}">
 
                 <button type="submit" class="btn btn-primary">
                     Search
@@ -32,23 +31,26 @@
             <div class="card h-100 shadow-sm border-0 rounded-4">
 
                 {% if meal.strMealThumb %}
-                <img src="{{ meal.strMealThumb }}" class="card-img-top" alt="{{ meal.strMeal }}"
-                    style="height: 180px; object-fit: cover;">
+                <img src="{{ meal.strMealThumb }}" class="card-img-top api-recipe-image" alt="{{ meal.strMeal }}">
+
+
                 {% endif %}
 
                 <div class="card-body d-flex flex-column">
 
-                    <h6 class="card-title fw-bold">
+                    <h6 class="card-title fw-bold api-recipe-title">
                         {{ meal.strMeal }}
                     </h6>
 
-                    <p class="text-muted mb-1 small">
-                        Category: {{ meal.strCategory }}
-                    </p>
+                    <div class="api-recipe-details">
+                        <p class="text-muted mb-1 small">
+                            Category: {{ meal.strCategory }}
+                        </p>
 
-                    <p class="mb-3 small">
-                        Cuisine: {{ meal.strArea }}
-                    </p>
+                        <p class="mb-3 small">
+                            Cuisine: {{ meal.strArea }}
+                        </p>
+                    </div>
 
                     <div class="mt-auto pt-3">
 
@@ -90,7 +92,6 @@
         {% endfor %}
     </div>
 </main>
-{% load static %}
 
 <script src="{% static 'recipes/js/api.js' %}"></script>
 
