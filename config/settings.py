@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-wlzgskfr&5g7upy73rpt4+j#9^fyg1wl0b&5bx3)=kp!49_zbm
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "tastehub-flrr.onrender.com"]
 
 
 # Application definition
