@@ -105,7 +105,7 @@ h4 {
 
 .home-page {
     position: relative;
-    background-image: url("../images/home-bg5.jpg");
+    background-image: url("/static/recipes/images/home-bg5.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
